@@ -1,0 +1,18 @@
+body {
+    background:
+        /* top, transparent black, faked with gradient */ 
+        linear-gradient(
+          rgba(0, 0, 0, 1), 
+          rgba(110, 110, 110, 0.8)
+        ),
+        /* bottom, image */
+        url(https://plus.unsplash.com/premium_photo-1661962702530-0b7fb5ee5426?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80);
+}
+
+a {
+    color: white !important;
+}
+
+.fs-1 {
+    font-size: 4em !important;
+}
