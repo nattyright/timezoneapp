@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+
+  timezoneapp:
+    #image: conniewho/timezoneapp:v1
+    build: ./timezoneapp
+    container_name: timezoneapp
+    restart: on-failure
+    env_file:
+      - ./timezoneapp/.env
+    expose:
+      - ${NODE_LOCAL_PORT}
+    volumes:
+      - ./:/code
+    environment:
+        VIRTUAL_HOST: timezone.jojochan.top
+        DB_HOST: mongo
+        DB_PORT: ${MONGODB_DOCKER_PORT}
+        DB_NAME: ${MONGODB_DATABASE}
+    stdin_open: true
+    tty: true
+
+  mongo:
+    image: mongo
+    restart: on-failure
+    env_file:
+      - ./timezoneapp/.env
+    ports:
+      - ${MONGODB_LOCAL_PORT}:${MONGODB_DOCKER_PORT}
+    volumes:
+      - mongodb:/data/db
+
+
+volumes:
+  mongodb:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
