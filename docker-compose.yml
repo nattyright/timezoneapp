@@ -3,7 +3,6 @@ version: "3.3"
 services:
 
   timezoneapp:
-    #image: conniewho/timezoneapp:v1
     build: ./
     container_name: timezoneapp
     restart: on-failure
@@ -29,11 +28,10 @@ services:
     ports:
       - ${MONGODB_LOCAL_PORT}:${MONGODB_DOCKER_PORT}
     volumes:
-      - mongodb:/data/db
-
-
-volumes:
-  mongodb:
+      - ~/data/mongo:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
 
 networks:
   default:

@@ -17,6 +17,8 @@ const secretRoute = require('./routes/secret');
 const app = express();
 const PORT = 3001;
 const {
+  DB_USER,
+  DB_PASSWORD,
   DB_HOST,
   DB_PORT,
   DB_NAME,
@@ -36,7 +38,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+        mongoUrl: `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`,
     }),
 }))
 
