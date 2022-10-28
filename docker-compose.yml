@@ -14,6 +14,9 @@ services:
       - ./:/code
     environment:
         VIRTUAL_HOST: timezone.jojochan.top
+        VIRTUAL_PORT: 3001
+        LETSENCRYPT_HOST: timezone.jojochan.top
+        LETSENCRYPT_EMAIL: conniewho@gmail.com
         DB_HOST: mongo
         DB_PORT: ${MONGODB_DOCKER_PORT}
         DB_NAME: ${MONGODB_DATABASE}
