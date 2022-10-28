@@ -17,8 +17,6 @@ const secretRoute = require('./routes/secret');
 const app = express();
 const PORT = process.env.NODE_LOCAL_PORT || 3001;
 const {
-  DB_USER,
-  DB_PASSWORD,
   DB_HOST,
   DB_PORT,
   DB_NAME,
