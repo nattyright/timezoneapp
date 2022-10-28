@@ -15,7 +15,14 @@ const authRoute = require('./routes/auth');
 const secretRoute = require('./routes/secret');
 
 const app = express();
-const PORT = process.env.NODE_DOCKER_PORT || 3001;
+const PORT = process.env.NODE_LOCAL_PORT || 3001;
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_HOST,
+  DB_PORT,
+  DB_NAME,
+} = process.env;
 
 app.set('view engine', 'ejs');
 require('./database');
@@ -31,7 +38,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost:27017/timezone_buddies',
+        mongoUrl: 'mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}',
     }),
 }))
 
