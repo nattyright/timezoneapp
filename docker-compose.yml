@@ -4,11 +4,11 @@ services:
 
   timezoneapp:
     #image: conniewho/timezoneapp:v1
-    build: ./timezoneapp
+    build: ./
     container_name: timezoneapp
     restart: on-failure
     env_file:
-      - ./timezoneapp/.env
+      - ./.env
     expose:
       - ${NODE_LOCAL_PORT}
     volumes:
@@ -25,7 +25,7 @@ services:
     image: mongo
     restart: on-failure
     env_file:
-      - ./timezoneapp/.env
+      - ./.env
     ports:
       - ${MONGODB_LOCAL_PORT}:${MONGODB_DOCKER_PORT}
     volumes:
